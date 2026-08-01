@@ -7,19 +7,19 @@ const config = {
   serviceId: __ENV.SERVICE_ID || "json-placeholder",
   environment: __ENV.TEST_ENVIRONMENT || "demo",
   profile: __ENV.TEST_PROFILE || "baseline",
-  baseUrl:
-    __ENV.BASE_URL || "https://jsonplaceholder.typicode.com",
+  baseUrl: __ENV.BASE_URL || "https://jsonplaceholder.typicode.com",
   endpoint: __ENV.ENDPOINT || "/posts",
   gitCommit: __ENV.GIT_COMMIT || "unknown",
   jenkinsBuildNumber: __ENV.JENKINS_BUILD_NUMBER || "local",
   jenkinsBuildUrl: __ENV.JENKINS_BUILD_URL || null,
+  jenkinsJobName: __ENV.JOB_NAME || __ENV.JENKINS_JOB_NAME || null, // add this
 };
 
 export const options = {
   stages: [
-    { duration: __ENV.RAMP_UP_DURATION || "5s", target: 7 },
-    { duration: __ENV.STEADY_DURATION || "5s", target: 6 },
-    { duration: __ENV.RAMP_DOWN_DURATION || "7s", target: 0 },
+    { duration: __ENV.RAMP_UP_DURATION || "30s", target: Number(__ENV.VIRTUAL_USERS || 10) },
+    { duration: __ENV.STEADY_DURATION || "1m", target: Number(__ENV.VIRTUAL_USERS || 10) },
+    { duration: __ENV.RAMP_DOWN_DURATION || "10s", target: 0 },
   ],
 
   thresholds: {
