@@ -17,9 +17,9 @@ const config = {
 
 export const options = {
   stages: [
-    { duration: __ENV.RAMP_UP_DURATION || "30s", target: Number(__ENV.VIRTUAL_USERS || 10) },
-    { duration: __ENV.STEADY_DURATION || "1m", target: Number(__ENV.VIRTUAL_USERS || 10) },
-    { duration: __ENV.RAMP_DOWN_DURATION || "10s", target: 0 },
+    { duration: __ENV.RAMP_UP_DURATION || "10s", target: Number(__ENV.VIRTUAL_USERS || 10) },
+    { duration: __ENV.STEADY_DURATION || "15s", target: Number(__ENV.VIRTUAL_USERS || 10) },
+    { duration: __ENV.RAMP_DOWN_DURATION || "5s", target: 0 },
   ],
 
   thresholds: {
