@@ -98,6 +98,7 @@ export function handleSummary(data) {
       gitCommit: config.gitCommit,
       jenkinsBuildNumber: config.jenkinsBuildNumber,
       jenkinsBuildUrl: config.jenkinsBuildUrl,
+      jenkinsJobName: config.jenkinsJobName,
     },
 
     configuration: {
@@ -106,21 +107,13 @@ export function handleSummary(data) {
 
       // Store only explicitly approved, non-secret variables.
       variables: {
-        rampUpDuration:
-          __ENV.RAMP_UP_DURATION || "30s",
-        steadyDuration:
-          __ENV.STEADY_DURATION || "1m",
-        rampDownDuration:
-          __ENV.RAMP_DOWN_DURATION || "10s",
-        p95ThresholdMs: Number(
-          __ENV.P95_THRESHOLD_MS || 500,
-        ),
-        errorRateThreshold: Number(
-          __ENV.ERROR_RATE_THRESHOLD || 0.01,
-        ),
-        thinkTimeSeconds: Number(
-          __ENV.THINK_TIME_SECONDS || 1,
-        ),
+        rampUpDuration: __ENV.RAMP_UP_DURATION || "30s",
+        steadyDuration: __ENV.STEADY_DURATION || "1m",
+        rampDownDuration: __ENV.RAMP_DOWN_DURATION || "10s",
+        virtualUsers: Number(__ENV.VIRTUAL_USERS || 10),
+        p95ThresholdMs: Number(__ENV.P95_THRESHOLD_MS || 500),
+        errorRateThreshold: Number(__ENV.ERROR_RATE_THRESHOLD || 0.01),
+        thinkTimeSeconds: Number(__ENV.THINK_TIME_SECONDS || 1),
       },
     },
 
